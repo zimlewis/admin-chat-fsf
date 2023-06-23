@@ -1,0 +1,136 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+    font-size: 20px;
+    background-color: #21222c;
+   
+}
+
+/* Style the container */
+.container {
+    position: relative;
+    max-width: 100%;
+    background-color: #21222c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the messages container */
+#messages {
+    padding: 10px;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+/* Style the individual messages */
+.msg {
+    position: relative;
+
+    margin-bottom: 10px;
+}
+
+.msg > div {
+    width: fit-content;
+    max-width: 40%;
+    right: 0;
+    overflow-wrap: break-word;
+}
+
+/* Style the current user message */
+.you {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #00fff7;
+    color: #0a1e31;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Style the other user message */
+.not-you {
+    background-color: #f1f0f0;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Style the form */
+#send-message {
+    width: 98%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    height: 7%;
+}
+
+/* Style the message input */
+#message {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+/* Style the submit button */
+#send-message input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    overflow: auto;
+    border-radius: 30px;
+    outline: none;
+
+    font-size: 20px;
+
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+}
+
+/* Style the submit button on hover */
+#send-message input[type="submit"]:hover {
+    background-color: #45a049;
+    border: 0;
+    border: none;
+    overflow: auto;
+
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+}
+
+
+#send-message input[id = 'message']{
+    font-size: 20px;
+    min-height: 50px;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 30px;
+    outline: 0;
+}
+
+
+#send-message input[id = 'message']:focus{
+    outline: none;
+
+}
+
+header{
+    padding: 20px;
+    background-color: #0a1e31;
+    color: white;
+    text-align: center;
+    margin: 0;
+    position: sticky;
+    top: 0;
+}

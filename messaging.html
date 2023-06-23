@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ym</title>
+        <link rel="stylesheet" href="css/chat.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                FSF support
+                <form><label><input id = 'mess-update' type = "checkbox" checked>  Read latest message</label></form>
+            </header>
+            <div id = "messages">
+
+            </div>
+            <form id = "send-message">
+                <input type = "text" id = "message" autocomplete = "off">
+                <input type = "submit">
+            </form>
+        </div>
+
+
+        <script type="module" src = "script/messaging.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+
+
+    </body>
+</html>
