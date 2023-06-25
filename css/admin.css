@@ -1,11 +1,13 @@
 .read{
-    position: fixed;
     color: black;
-    left: 0;
+    max-width: fit-content;
+    margin-left: 10px;
+    margin-right: auto;
 }
 
 .new{
-    position: fixed;
     color: blue;
-    right: 0;
+    max-width: fit-content;
+    margin-right: 10px;
+    margin-left: auto;
 }
