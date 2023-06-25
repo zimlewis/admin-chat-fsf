@@ -96,18 +96,17 @@ function update(){
 
 update();
 
+document.getElementById('submit').addEventListener("click" , () => {
+    localStorage.setItem("user", document.getElementById('name').value);
+})
 
-function set_send(val) {
-    localStorage.setItem("user", val);
-}
 
 function add_to(child) {
     const holder = document.getElementById("msg_list");
     var html = `<div id="${child}" class = "read">${child}</div>`;
     holder.innerHTML = html + holder.innerHTML;
-    document.getElementById(child).addEventListener('click' , () => {
-        set_send(child)
-        window.location.href = "messaging.html"
+    document.getElementById(child).addEventListener("click" , () => {
+        localStorage.setItem("user", child);
     })
 }
 
