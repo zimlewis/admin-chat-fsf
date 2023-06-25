@@ -37,8 +37,10 @@ body {
 .msg > div {
     width: fit-content;
     max-width: 70%;
-    right: 0;
     overflow-wrap: break-word;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 30px;
 }
 
 /* Style the current user message */
@@ -47,16 +49,12 @@ body {
     margin-right: 0;
     background-color: #00fff7;
     color: #0a1e31;
-    padding: 20px;
-    border-radius: 10px;
 }
 
 /* Style the other user message */
 .not-you {
     background-color: #f1f0f0;
     color: #000000;
-    padding: 20px;
-    border-radius: 10px;
 }
 
 /* Style the form */
