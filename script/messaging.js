@@ -1,9 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-import { getDatabase, onChildAdded , ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+import { getDatabase, onChildAdded , onChildChanged , ref, set, get } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 
 
 
@@ -25,21 +24,20 @@ const app = initializeApp(firebaseConfig);
 var db = getDatabase(app);
 
 
-
 var user_id = "admin";
-var _receiver = localStorage.getItem('user');
+var _receiver = localStorage.getItem("user");
 var mess_of = _receiver;
-
 
 //init
 var initialized = false;
 var messages_holder = document.getElementById("messages");
 // Reference to the 'mess' location
 const messDataRef = ref(db, '/mess/' + mess_of);
+const _messages = ref(db , '/mess/' + mess_of + '/messages')
 var mess_dic;
 
 // Retrieve the data from Firebase
-get(messDataRef)
+get(_messages)
     .then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
@@ -64,26 +62,28 @@ get(messDataRef)
     });
 
 
-//send message
+
 document.getElementById('send-message').addEventListener('submit', function (e) {
     e.preventDefault();
-    if (document.getElementById('message').value != ''){
+    if (document.getElementById('message').value.replace(/\s+/g, ' ').trim() != ''){
+        
         var _id = Date.now();
-        set(ref(db, 'mess/' + mess_of + "/" + _id), {
+        set(ref(db, 'mess/' + mess_of + "/messages/" + _id), {
             mess: document.getElementById('message').value,
             sender: user_id,
             receiver: _receiver
         });
-    
-        document.getElementById('send-message').reset();
+
+        set(ref(db, 'mess/' + mess_of + "/read"), true);
+
+        document.getElementById('send-message').reset();        
     }
 });
 
 
-
-onChildAdded(messDataRef , (snapshot) => {
-    if (initialized){
-        if (snapshot.exists()){
+onChildAdded(_messages, (snapshot) => {
+    if (initialized) {
+        if (snapshot.exists()) {
             const child = snapshot.val();
             add_child_to_mess_list(child);
         }
@@ -91,7 +91,9 @@ onChildAdded(messDataRef , (snapshot) => {
 })
 
 
-function add_child_to_mess_list(child){
+
+
+function add_child_to_mess_list(child) {
     var html = "<div class = 'msg'>";
     if (child["sender"] == user_id) html += "<div class = 'you'>"; else html += "<div class = 'not-you'>"
     html += child["mess"];
@@ -102,6 +104,7 @@ function add_child_to_mess_list(child){
         var objDiv = document.getElementById("messages");
         objDiv.scrollTop = objDiv.scrollHeight;
     }
+
 }
 
 

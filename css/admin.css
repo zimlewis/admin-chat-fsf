@@ -1,0 +1,11 @@
+.read{
+    position: fixed;
+    color: black;
+    left: 0;
+}
+
+.new{
+    position: fixed;
+    color: blue;
+    right: 0;
+}

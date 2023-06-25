@@ -2,14 +2,20 @@
 <html lang="en">
     <head>
         <title>ym</title>
+        <link rel="stylesheet" href="css/admin.css">
     </head>
     <body>
         <form>
             <input type = "text" id = 'name' autocomplete = "off" />
-            <a id = "submit" onclick="set_send()" href = "messaging.html">go</a>
+            <a id = "submit" onclick="set_send(document.getElementById('name').value)" href = "messaging.html">go</a>
         </form>
 
-        <script src = "script/admin.js"></script> 
+        <div id = "msg_list">
+
+        </div>
+
+        <script type="module" src = "script/admin.js"></script> 
+        <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
 
     </body>
 </html>
